@@ -1,14 +1,13 @@
 import * as React from 'react'
-import { Button } from 'react-native-elements'
+import { RegisterController } from '@abb/controller'
+import RegisterView from './ui/RegisterView'
 
 class RegisterConnector extends React.PureComponent {
   render() {
     return (
-      <Button
-        style={{ marginTop: 70 }}
-        title="Button"
-        onPress={() => console.log('Button pressed')}
-      />
+      <RegisterController>
+        {({ submit }) => <RegisterView submit={submit} />}
+      </RegisterController>
     )
   }
 }
