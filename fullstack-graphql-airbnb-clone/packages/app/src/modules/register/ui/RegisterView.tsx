@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { Formik, withFormik, FormikErrors, Field } from 'formik'
 import { validUserSchema } from '@abb/common'
 import InputField from '../../shared/InputField'
-import { Button } from 'react-native-elements'
+import { Button, Card } from 'react-native-elements'
 
 interface FormValues {
   email: string
@@ -16,15 +16,27 @@ interface Props {
 
 const RegisterView: React.SFC<Formik<FormValues> & Props> = props => {
   return (
-    <View>
-      <Field name="email" placeholder="Email" component={InputField} />
-      <Field
-        name="password"
-        placeholder="Password"
-        secureTextEntry
-        component={InputField}
-      />
-      <Button title="Submit" onPress={props.handleSubmit as any} />
+    <View style={{ flex: 1, justifyContent: 'center' }}>
+      <Card title="Register">
+        <Field
+          name="email"
+          placeholder="Email"
+          autoCapitalize="none"
+          component={InputField}
+        />
+        <Field
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          component={InputField}
+        />
+        <Button
+          title="Submit"
+          onPress={props.handleSubmit as any}
+          buttonStyle={{ marginTop: 30 }}
+          backgroundColor="#03A9F4"
+        />
+      </Card>
     </View>
   )
 }

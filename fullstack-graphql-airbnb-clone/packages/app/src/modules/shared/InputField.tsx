@@ -21,7 +21,6 @@ const InputField: React.SFC<FieldProps<any> & Props> = ({
     <View>
       <FormLabel>{placeholder}</FormLabel>
       <FormInput
-        placeholder={placeholder}
         value={value}
         onChangeText={handleChange(name)}
         onBlur={handleBlur(name)}
