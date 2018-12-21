@@ -20,6 +20,8 @@ class C extends React.Component<
   ChildMutateProps<Props, LoginMutation, LoginMutationVariables>
 > {
   submit = async (values: LoginMutationVariables) => {
+    console.log(values)
+
     // const {
     //   data: { login },
     // } = await this.props.mutate({
