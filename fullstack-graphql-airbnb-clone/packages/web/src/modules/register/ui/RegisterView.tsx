@@ -1,10 +1,9 @@
 import * as React from 'react'
-import * as Antd from 'antd'
+import { Form as FormAnt, Icon, Button } from 'antd'
 import { withFormik, FormikErrors, FormikProps, Field, Form } from 'formik'
 import { validUserSchema } from '@abb/common'
 import { InputField } from '../../shared/InputField'
 
-const { Form: FormAnt, Icon, Button } = Antd
 const FormItem = FormAnt.Item
 interface FormValues {
   email: string

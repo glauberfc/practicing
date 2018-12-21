@@ -16,5 +16,9 @@
       "**/metro-bundler-config-yarn-workspaces",
       "**/metro-bundler-config-yarn-workspaces/**"
     ]
+  },
+  "resolutions": {
+    "graphql": "^14.0.2",
+    "**/graphql": "^14.0.2"
   }
 }

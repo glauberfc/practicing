@@ -6,9 +6,10 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "introspect": "apollo-codegen introspect-schema http://localhost:4000 --output schema.json",
-    "generate": "apollo-codegen generate src/**/*.tsx --schema schema.json --target typescript --output src/operation-result-types.ts",
-    "gen-types": "yarn run introspect && yarn run generate"
+    "schema:download": "apollo service:download --endpoint=http://localhost:4000",
+    "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.tsx --target=typescript --outputFlat src/schemaTypes.ts",
+    "gen:types": "yarn schema:download && yarn codegen:generate",
+    "refresh": "yarn gen:types && yarn build"
   },
   "dependencies": {
     "graphql": "^14.0.2",
@@ -18,10 +19,11 @@
     "react-dom": "^16.6.1"
   },
   "devDependencies": {
+    "@babel/generator": "^7.2.2",
     "@types/node": "^10.12.3",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
-    "apollo-codegen": "^0.20.2",
+    "apollo": "^2.1.8",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "typescript": "^3.1.6"
