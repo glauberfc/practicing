@@ -3,6 +3,7 @@ import { Form as FormAnt, Icon, Button } from 'antd'
 import { withFormik, FormikErrors, FormikProps, Field, Form } from 'formik'
 import { validUserSchema } from '@abb/common'
 import { InputField } from '../../shared/InputField'
+import { Link } from 'react-router-dom'
 
 const FormItem = FormAnt.Item
 interface FormValues {
@@ -34,23 +35,17 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           />
 
           <FormItem>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
-          </FormItem>
-
-          <FormItem>
             <Button
               type="primary"
               htmlType="submit"
               className="login-form-button"
             >
-              Login
+              Save
             </Button>
           </FormItem>
 
           <FormItem>
-            Or <a href="">register now!</a>
+            Or <Link to="/login">login now!</Link>
           </FormItem>
         </div>
       </Form>
