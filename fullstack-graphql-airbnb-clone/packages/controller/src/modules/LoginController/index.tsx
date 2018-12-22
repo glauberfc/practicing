@@ -1,10 +1,11 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
-import { ChildMutateProps, graphql } from 'react-apollo'
+import { ChildMutateProps, graphql, MutationResult } from 'react-apollo'
 import { LoginMutation, LoginMutationVariables } from '../../schemaTypes'
-// import { normalizeErrors } from '../utils/normalizeErrors'
+import { normalizeErrors } from '../utils/normalizeErrors'
 
 interface Props {
+  onSessionId?: (sessionId: string) => void
   children: (
     data: {
       submit: (
@@ -16,25 +17,31 @@ interface Props {
   ) => JSX.Element | null
 }
 
-class C extends React.Component<
+class C extends React.PureComponent<
   ChildMutateProps<Props, LoginMutation, LoginMutationVariables>
 > {
   submit = async (values: LoginMutationVariables) => {
     console.log(values)
 
-    // const {
-    //   data: { login },
-    // } = await this.props.mutate({
-    //   variables: values,
-    // })
+    const {
+      data: {
+        login: { errors, sessionId },
+      },
+    } = (await this.props.mutate({
+      variables: values,
+    })) as MutationResult<any>
 
-    const response = await this.props.mutate({ variables: values })
+    // const response = await this.props.mutate({ variables: values })
 
-    console.log('response: ', response)
+    console.log('response: ', errors, sessionId)
 
-    // if (login) {
-    //   return normalizeErrors(login)
-    // }
+    if (errors) {
+      return normalizeErrors(errors)
+    }
+
+    if (sessionId && this.props.onSessionId) {
+      this.props.onSessionId(sessionId)
+    }
 
     return null
   }
@@ -47,8 +54,11 @@ class C extends React.Component<
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      path
-      message
+      errors {
+        path
+        message
+      }
+      sessionId
     }
   }
 `
