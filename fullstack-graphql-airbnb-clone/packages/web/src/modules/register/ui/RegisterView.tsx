@@ -22,6 +22,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
         <div style={{ width: 400, margin: '20px auto' }}>
           <Field
             name="email"
+            type="email"
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="Email"
             component={InputField}
@@ -29,6 +30,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 
           <Field
             name="password"
+            type="password"
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="password"
             component={InputField}
