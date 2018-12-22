@@ -2,6 +2,43 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: ForgotPasswordChange
+// ====================================================
+
+export interface ForgotPasswordChange_forgotPasswordChange {
+  __typename: "Error";
+  path: string;
+  message: string;
+}
+
+export interface ForgotPasswordChange {
+  forgotPasswordChange: ForgotPasswordChange_forgotPasswordChange[] | null;
+}
+
+export interface ForgotPasswordChangeVariables {
+  newPassword: string;
+  key: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: ForgotPasswordMutation
+// ====================================================
+
+export interface ForgotPasswordMutation {
+  sendForgotPasswordEmail: boolean | null;
+}
+
+export interface ForgotPasswordMutationVariables {
+  email: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: LoginMutation
 // ====================================================
 
