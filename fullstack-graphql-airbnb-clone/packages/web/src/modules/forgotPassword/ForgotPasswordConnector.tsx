@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { LoginController } from '@abb/controller'
 import ForgotPasswordView from './ui/ForgotPasswordView'
+import { ForgotPasswordController } from '@abb/controller'
 
 export const ForgotPasswordConnector = () => (
-  <LoginController>
+  <ForgotPasswordController>
     {({ submit }) => <ForgotPasswordView submit={submit} />}
-  </LoginController>
+  </ForgotPasswordController>
 )

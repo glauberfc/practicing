@@ -1,6 +1,10 @@
 import * as nodemailer from 'nodemailer'
 
-export const sendEmail = async (recipient: string, url: string) => {
+export const sendEmail = async (
+  recipient: string,
+  url: string,
+  linkText: string
+) => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
@@ -15,12 +19,12 @@ export const sendEmail = async (recipient: string, url: string) => {
   const mailOptions = {
     from: '"Fred Foo 👻" <foo@example.com>', // sender address
     to: recipient, // list of receivers
-    subject: 'Confirm Email ✔', // Subject line
+    subject: `${linkText} ✔`, // Subject line
     text: 'Hello world?', // plain text body
     html: `<html>
         <body>
         <p>Testing - the world's most awesomest email service!</p>
-        <a href="${url}">confirm email</a>
+        <a href="${url}">${linkText}</a>
         </body>
         </html>`,
   }
