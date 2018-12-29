@@ -13,16 +13,17 @@ export const ChangePasswordConnector: React.SFC<
   } = props
   console.log(key)
 
+  const onFinish = () => {
+    props.history.push('/login')
+  }
+
   return (
     <ChangePasswordController>
       {({ submit }) => (
         <ChangePasswordView
-          submit={async ({ newPassword }) =>
-            submit({
-              key,
-              newPassword,
-            })
-          }
+          onFinish={onFinish}
+          tokenKey={key}
+          submit={submit}
         />
       )}
     </ChangePasswordController>

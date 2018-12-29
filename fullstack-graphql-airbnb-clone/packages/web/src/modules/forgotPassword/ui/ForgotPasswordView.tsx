@@ -11,6 +11,7 @@ interface FormValues {
 }
 
 interface Props {
+  onFinish: () => void
   submit: (values: FormValues) => Promise<NormalizedErrorsMap | null>
 }
 
@@ -48,6 +49,8 @@ export default withFormik<Props, FormValues>({
 
     if (errors) {
       setErrors(errors)
+    } else {
+      props.onFinish()
     }
   },
 })(ForgotPasswordView)

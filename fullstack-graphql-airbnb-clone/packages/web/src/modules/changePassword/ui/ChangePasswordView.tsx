@@ -4,7 +4,10 @@ import { InputField } from '../../shared/InputField'
 import { Button, Icon } from 'antd'
 import FormItem from 'antd/lib/form/FormItem'
 import { Link } from 'react-router-dom'
-import { NormalizedErrorsMap } from '@abb/controller'
+import {
+  NormalizedErrorsMap,
+  ForgotPasswordChangeVariables,
+} from '@abb/controller'
 import { newPasswordValidation } from '@abb/common'
 
 interface FormValues {
@@ -12,7 +15,11 @@ interface FormValues {
 }
 
 interface Props {
-  submit: (values: FormValues) => Promise<NormalizedErrorsMap | null>
+  onFinish: () => void
+  tokenKey: string
+  submit: (
+    values: ForgotPasswordChangeVariables
+  ) => Promise<NormalizedErrorsMap | null>
 }
 
 const ChangePasswordView: React.SFC<
@@ -46,14 +53,15 @@ const ChangePasswordView: React.SFC<
 export default withFormik<Props, FormValues>({
   validationSchema: newPasswordValidation,
   mapPropsToValues: () => ({ newPassword: '' }),
-  handleSubmit: async (values, { props, setErrors, resetForm }) => {
-    console.log(values)
-    const errors = await props.submit(values)
+  handleSubmit: async ({ newPassword }, { props, setErrors, resetForm }) => {
+    console.log(newPassword, props.tokenKey)
+    const errors = await props.submit({ newPassword, key: props.tokenKey })
 
     if (errors) {
       setErrors(errors)
+    } else {
+      resetForm()
+      props.onFinish()
     }
-
-    resetForm()
   },
 })(ChangePasswordView)

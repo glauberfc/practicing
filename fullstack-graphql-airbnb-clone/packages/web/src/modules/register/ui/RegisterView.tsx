@@ -13,6 +13,7 @@ interface FormValues {
 }
 
 interface Props {
+  onFinish: () => void
   submit: (values: FormValues) => Promise<NormalizedErrorsMap | null>
 }
 
@@ -63,6 +64,8 @@ export const RegisterView = withFormik<Props, FormValues>({
     const errors = await props.submit(values)
     if (errors) {
       setErrors(errors)
+    } else {
+      props.onFinish()
     }
   },
 })(C)
