@@ -20,13 +20,8 @@ export const ChangePasswordConnector: React.SFC<
   return (
     <ChangePasswordController>
       {({ submit }) => (
-        <ChangePasswordView
-          onFinish={onFinish}
-          tokenKey={key}
-          submit={submit}
-        />
+        <ChangePasswordView onFinish={onFinish} token={key} submit={submit} />
       )}
     </ChangePasswordController>
-    // <ChangePasswordView submit={submit} />
   )
 }
