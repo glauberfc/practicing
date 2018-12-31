@@ -3,7 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "quokka": {
+    "babel": {
+      "presets": [
+        "es2017"
+      ],
+      "plugins": [
+        "transform-async-generator-functions"
+      ]
+    }
+  },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-async-generator-functions": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
     "co": "^4.6.0",
     "node-fetch": "^2.3.0",
     "random-number": "^0.0.9"
