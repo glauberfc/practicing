@@ -1,8 +1,5 @@
-export function addTodo(text) {
+export function requestTodoList() {
   return {
-    type: 'ASYNC_ADD_TODO',
-    payload: {
-      text,
-    },
+    type: 'REQUEST_TODO_LIST',
   }
 }

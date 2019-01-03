@@ -1,23 +1,27 @@
-import { all, takeEvery, put, call, select } from 'redux-saga/effects'
+import { all, takeEvery, put, call } from 'redux-saga/effects'
 
-function apiGet(text, length) {
-  return new Promise((resolve, reject) => {
+function apiGet() {
+  return new Promise(resolve => {
     setTimeout(() => {
-      resolve(`${text} ${++length} time`)
+      resolve([
+        { id: 1, text: 'Task 1' },
+        { id: 2, text: 'Task 1' },
+        { id: 3, text: 'Task 1' },
+        { id: 4, text: 'Task 1' },
+      ])
     }, 1000)
   })
 }
 
-function* asyncAddTodo(action) {
+function* getTodoList() {
   try {
-    const todos = yield select(state => state.todos)
-    const response = yield call(apiGet, action.payload.text, todos.length)
-    yield put({ type: 'ADD_TODO', payload: { text: response } })
+    const response = yield call(apiGet)
+    yield put({ type: 'SUCCESS_GET_TODO_LIST', payload: { data: response } })
   } catch (error) {
-    yield put({ type: 'ERROR' })
+    yield put({ type: 'FAILURE_GET_TODO_LIST' })
   }
 }
 
 export default function* rootSaga() {
-  yield all([takeEvery('ASYNC_ADD_TODO', asyncAddTodo)])
+  yield all([takeEvery('REQUEST_TODO_LIST', getTodoList)])
 }
