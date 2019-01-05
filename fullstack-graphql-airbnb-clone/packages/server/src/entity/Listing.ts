@@ -4,7 +4,6 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   ManyToMany,
-  JoinColumn,
 } from 'typeorm'
 import { User } from './User'
 
@@ -14,6 +13,9 @@ export class Listing extends BaseEntity {
 
   @Column('varchar', { length: 100 })
   name: string
+
+  @Column('varchar', { length: 100 })
+  category: string
 
   @Column('text') pictureUrl: string
 
@@ -33,9 +35,8 @@ export class Listing extends BaseEntity {
   @Column('text', { array: true })
   amenities: string[]
 
-  @Column('uuid') ownerId: string
+  @Column('uuid') userId: string
 
   @ManyToMany(() => User, user => user.listings)
-  @JoinColumn({ name: 'ownerId' })
   user: User
 }

@@ -74,12 +74,14 @@ export const startServer = async () => {
     await createTestConn(true)
   } else {
     await createTypeormConn()
+    // const conn = await createTypeormConn()
+    // await conn.runMigrations()
   }
   const app = await server.start({
     cors,
     port: process.env.NODE_ENV === 'test' ? 0 : 4000,
   })
-  console.log('Server is running on localhost:4000')
+  console.log('Server is running on http://localhost:4000')
 
   return app
 }
