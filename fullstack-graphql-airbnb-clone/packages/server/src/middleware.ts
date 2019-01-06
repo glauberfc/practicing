@@ -12,7 +12,7 @@ const isAuthenticated = async (
   return resolve(parent, args, context, info)
 }
 export const middleware = {
-  Mutations: {
+  Mutation: {
     createListing: isAuthenticated,
     deleteListing: isAuthenticated,
   },
