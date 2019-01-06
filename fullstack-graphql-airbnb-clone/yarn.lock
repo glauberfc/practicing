@@ -6387,7 +6387,7 @@ graphql-import@^0.7.0, graphql-import@^0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-middleware@3.0.0:
+graphql-middleware@3.0.0, graphql-middleware@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-3.0.0.tgz#df498cc2c19ca5936fc67e9e39df6c484dbf4d80"
   integrity sha512-m1V5G8jTatG8ZbFWLWBqrlVbHNpJv/U15LJ8U3XAoLjxm5HRY9rVXns6I4gigJqUt/0i/xYO7Lk3YkxqHi8QmQ==
