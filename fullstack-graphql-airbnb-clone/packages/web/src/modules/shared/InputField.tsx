@@ -33,7 +33,7 @@ export const InputField: React.SFC<
         onChange={
           useNumberComponent
             ? (newValue: number) => setFieldValue(field.name, newValue)
-            : setFieldValue
+            : onChange
         }
       />
     </FormItem>
