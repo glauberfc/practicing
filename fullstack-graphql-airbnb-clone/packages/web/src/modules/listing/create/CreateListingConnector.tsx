@@ -61,15 +61,17 @@ export default class CreateListingConnector extends React.PureComponent<
             <div style={{ width: 400, margin: '20px auto' }}>
               {pages[this.state.page]}
               <FormItem>
-                {this.state.page === pages.length - 1 ? (
-                  <Button type="primary" htmlType="submit">
-                    Create listing
-                  </Button>
-                ) : (
-                  <Button type="primary" onClick={this.nextPage}>
-                    Next page
-                  </Button>
-                )}
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  {this.state.page === pages.length - 1 ? (
+                    <Button type="primary" htmlType="submit">
+                      Create listing
+                    </Button>
+                  ) : (
+                    <Button type="primary" onClick={this.nextPage}>
+                      Next page
+                    </Button>
+                  )}
+                </div>
               </FormItem>
             </div>
           </Form>
