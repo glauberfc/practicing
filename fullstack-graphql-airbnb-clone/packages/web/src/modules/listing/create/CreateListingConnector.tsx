@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Form as AntForm, Button } from 'antd'
-import { Formik, Form } from 'formik'
+import { Formik, Form, FormikActions } from 'formik'
+import { withCreateListing, NewPropsCreateListing } from '@abb/controller'
 
 import { Page1 } from './ui/Page1'
 import { Page2 } from './ui/Page2'
@@ -26,16 +27,20 @@ interface State {
 }
 
 const pages = [<Page1 />, <Page2 />, <Page3 />]
-export default class CreateListingConnector extends React.PureComponent<
-  RouteComponentProps<{}>,
+class CreateListingConnector extends React.PureComponent<
+  RouteComponentProps<{}> & NewPropsCreateListing,
   State
 > {
   state = {
     page: 0,
   }
 
-  submit = (values: any) => {
-    console.log('values: ', values)
+  submit = async (
+    values: FormValues,
+    { setSubmitting }: FormikActions<FormValues>
+  ) => {
+    await this.props.creatingListing(values)
+    setSubmitting(false)
   }
 
   nextPage = () => this.setState(state => ({ page: state.page + 1 }))
@@ -56,18 +61,26 @@ export default class CreateListingConnector extends React.PureComponent<
         }}
         onSubmit={this.submit}
       >
-        {() => (
+        {({ isSubmitting }) => (
           <Form style={{ display: 'flex' }}>
             <div style={{ width: 400, margin: '20px auto' }}>
               {pages[this.state.page]}
               <FormItem>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {this.state.page === pages.length - 1 ? (
-                    <Button type="primary" htmlType="submit">
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      disabled={isSubmitting}
+                    >
                       Create listing
                     </Button>
                   ) : (
-                    <Button type="primary" onClick={this.nextPage}>
+                    <Button
+                      type="primary"
+                      htmlType="button"
+                      onClick={this.nextPage}
+                    >
                       Next page
                     </Button>
                   )}
@@ -80,3 +93,5 @@ export default class CreateListingConnector extends React.PureComponent<
     )
   }
 }
+
+export default withCreateListing(CreateListingConnector)

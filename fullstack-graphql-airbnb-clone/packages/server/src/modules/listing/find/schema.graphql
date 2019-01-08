@@ -1,4 +1,4 @@
-input Listing {
+type Listing {
   id: ID!
   name: String!
   category: String!
@@ -13,5 +13,5 @@ input Listing {
 }
 
 type Query {
-  findListings: Boolean
+  findListings: [Listing!]!
 }
