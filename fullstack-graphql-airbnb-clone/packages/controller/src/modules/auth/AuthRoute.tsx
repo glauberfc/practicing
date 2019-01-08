@@ -17,7 +17,14 @@ class AuthRouteComponent extends React.PureComponent<
     }
 
     if (!data.me) {
-      return <Redirect to="/login" />
+      return (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { nextPage: routeProps.location.pathname },
+          }}
+        />
+      )
     }
 
     const Component = component as any

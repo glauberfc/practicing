@@ -3,9 +3,20 @@ import LoginView from './ui/LoginView'
 import { LoginController } from '@abb/controller'
 import { RouteComponentProps } from 'react-router-dom'
 
-export const LoginConnector: React.SFC<RouteComponentProps<{}>> = props => {
+export const LoginConnector: React.SFC<
+  RouteComponentProps<{}, {}, { nextPage: string }>
+> = props => {
   const onFinish = () => {
-    props.history.push('/')
+    const {
+      history,
+      location: { state },
+    } = props
+
+    if (state && state.nextPage) {
+      return history.push(state.nextPage)
+    }
+
+    return history.push('/')
   }
 
   return (
