@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Form as AntForm, Button } from 'antd'
 import { Formik, Form, FormikActions } from 'formik'
-import { withCreateListing, NewPropsCreateListing } from '@abb/controller'
+import { withCreateListing, WithCreateListing } from '@abb/controller'
 
 import { Page1 } from './ui/Page1'
 import { Page2 } from './ui/Page2'
@@ -28,7 +28,7 @@ interface State {
 
 const pages = [<Page1 />, <Page2 />, <Page3 />]
 class CreateListingConnector extends React.PureComponent<
-  RouteComponentProps<{}> & NewPropsCreateListing,
+  RouteComponentProps<{}> & WithCreateListing,
   State
 > {
   state = {
