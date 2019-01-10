@@ -2,16 +2,17 @@ import * as React from 'react'
 import { Form as AntForm, Button } from 'antd'
 import { Formik, Form, FormikActions } from 'formik'
 import { withCreateListing, WithCreateListing } from '@abb/controller'
+import { RouteComponentProps } from 'react-router-dom'
 
 import { Page1 } from './ui/Page1'
 import { Page2 } from './ui/Page2'
 import { Page3 } from './ui/Page3'
-import { RouteComponentProps } from 'react-router-dom'
 
 const FormItem = AntForm.Item
 
 interface FormValues {
   name: string
+  picture: File | null
   category: string
   description: string
   price: number
@@ -50,6 +51,7 @@ class CreateListingConnector extends React.PureComponent<
       <Formik<FormValues>
         initialValues={{
           name: '',
+          picture: null,
           category: '',
           description: '',
           price: 0,
@@ -61,20 +63,22 @@ class CreateListingConnector extends React.PureComponent<
         }}
         onSubmit={this.submit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values }) => (
           <Form style={{ display: 'flex' }}>
             <div style={{ width: 400, margin: '20px auto' }}>
               {pages[this.state.page]}
               <FormItem>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {this.state.page === pages.length - 1 ? (
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      disabled={isSubmitting}
-                    >
-                      Create listing
-                    </Button>
+                    <div>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        disabled={isSubmitting}
+                      >
+                        Create listing
+                      </Button>
+                    </div>
                   ) : (
                     <Button
                       type="primary"
