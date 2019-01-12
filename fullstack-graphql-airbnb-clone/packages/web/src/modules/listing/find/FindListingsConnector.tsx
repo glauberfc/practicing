@@ -23,7 +23,7 @@ class FindListingsConnector extends React.PureComponent<WithFindListings> {
               )
             }
           >
-            <Meta title={listing.name} description="www.instagram.com" />
+            <Meta title={listing.name} description={listing.owner.email} />
           </Card>
         ))}
       </div>

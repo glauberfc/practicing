@@ -68,11 +68,18 @@ export interface CreateListingMutationVariables {
 // GraphQL query operation: FindListingQuery
 // ====================================================
 
+export interface FindListingQuery_findListings_owner {
+  __typename: "User";
+  id: string;
+  email: string;
+}
+
 export interface FindListingQuery_findListings {
   __typename: "Listing";
   id: string;
   name: string;
   pictureUrl: string;
+  owner: FindListingQuery_findListings_owner;
 }
 
 export interface FindListingQuery {

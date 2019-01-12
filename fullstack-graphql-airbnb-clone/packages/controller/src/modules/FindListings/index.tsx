@@ -11,6 +11,10 @@ const findListginsQuery = gql`
       id
       name
       pictureUrl
+      owner {
+        id
+        email
+      }
     }
   }
 `
