@@ -15,6 +15,7 @@ import { genSchema } from './utils/genSchema'
 import { redisSessionPrefix } from './constants'
 import { createTestConn } from './testUtils/createTestConn'
 import { middleware } from './middleware'
+import { userLoader } from './loaders/userLoader'
 
 const SESSION_SECRET = 'ajslkjalksjdfkl'
 const RedisStore = connectRedis(session as any)
@@ -34,6 +35,7 @@ export const startServer = async () => {
       url: request.protocol + '://' + request.get('host'),
       session: request.session,
       req: request,
+      userLoader: userLoader(),
     }),
   })
 
