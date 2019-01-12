@@ -18,10 +18,9 @@ class FindListingsConnector extends React.PureComponent<WithFindListings> {
             hoverable
             style={{ width: 240 }}
             cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
+              listing.pictureUrl && (
+                <img alt="example" src={listing.pictureUrl} />
+              )
             }
           >
             <Meta title={listing.name} description="www.instagram.com" />
