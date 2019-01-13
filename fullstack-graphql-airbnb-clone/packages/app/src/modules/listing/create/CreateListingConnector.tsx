@@ -6,6 +6,7 @@ import { View, ScrollView } from 'react-native'
 import { Text, Button } from 'react-native-elements'
 
 import InputField from '../../shared/InputField'
+import CheckboxGroupField from '../../shared/CheckboxGroupField'
 
 interface FormValues {
   name: string
@@ -72,6 +73,7 @@ class CreateListingConnector extends React.PureComponent<
                 name="price"
                 placeholder="Price"
                 useNumberComponent
+                keyboardType="numeric"
                 component={InputField}
               />
               <Field
@@ -79,6 +81,7 @@ class CreateListingConnector extends React.PureComponent<
                 name="beds"
                 placeholder="Beds"
                 useNumberComponent
+                keyboardType="numeric"
                 component={InputField}
               />
               <Field
@@ -86,6 +89,7 @@ class CreateListingConnector extends React.PureComponent<
                 name="guests"
                 placeholder="Guests"
                 useNumberComponent
+                keyboardType="numeric"
                 component={InputField}
               />
               <Field
@@ -93,6 +97,7 @@ class CreateListingConnector extends React.PureComponent<
                 name="latitude"
                 placeholder="Latitude"
                 useNumberComponent
+                keyboardType="numeric"
                 component={InputField}
               />
               <Field
@@ -100,7 +105,13 @@ class CreateListingConnector extends React.PureComponent<
                 name="longitude"
                 placeholder="Longitude"
                 useNumberComponent
+                keyboardType="numeric"
                 component={InputField}
+              />
+              <Field
+                name="amenities"
+                options={['pool', 'basketball court', 'soccer field', 'yard']}
+                component={CheckboxGroupField}
               />
               <Button
                 title="Save listing"
