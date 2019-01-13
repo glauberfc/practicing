@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Form as AntForm, Button } from 'antd'
 import { Formik, Form, FormikActions } from 'formik'
 import { withCreateListing, WithCreateListing } from '@abb/controller'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Link } from 'react-router-dom'
 
 import { Page1 } from './ui/Page1'
 import { Page2 } from './ui/Page2'
@@ -65,6 +65,7 @@ class CreateListingConnector extends React.PureComponent<
       >
         {({ isSubmitting, values }) => (
           <Form style={{ display: 'flex' }}>
+            <Link to="/logout">Logout</Link>
             <div style={{ width: 400, margin: '20px auto' }}>
               {pages[this.state.page]}
               <FormItem>
