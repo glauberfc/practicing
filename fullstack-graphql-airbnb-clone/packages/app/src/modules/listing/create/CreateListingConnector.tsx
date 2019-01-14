@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Formik, Field } from 'formik'
+import { Formik, Field, FormikActions } from 'formik'
 import { withCreateListing, WithCreateListing } from '@abb/controller'
 import { RouteComponentProps } from 'react-router-native'
 import { View, ScrollView } from 'react-native'
@@ -7,6 +7,7 @@ import { Text, Button } from 'react-native-elements'
 
 import InputField from '../../shared/InputField'
 import CheckboxGroupField from '../../shared/CheckboxGroupField'
+import PictureField from '../../shared/PictureField'
 
 interface FormValues {
   name: string
@@ -25,13 +26,18 @@ class CreateListingConnector extends React.PureComponent<
   RouteComponentProps<{}> & WithCreateListing
 > {
   submit = async (
-    values: FormValues
-    // { setSubmitting }
+    { price, beds, guests, latitude, longitude, ...values }: FormValues,
+    { setSubmitting }: FormikActions<FormValues>
   ) => {
-    console.log(values)
-
-    // await this.props.creatingListing(values)
-    // setSubmitting(false)
+    await this.props.creatingListing({
+      ...values,
+      price: parseInt(price, 10),
+      beds: parseInt(beds, 10),
+      guests: parseInt(guests, 10),
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+    })
+    setSubmitting(false)
   }
 
   render() {
@@ -53,11 +59,16 @@ class CreateListingConnector extends React.PureComponent<
       >
         {({ handleSubmit }) => (
           <View style={{ flex: 1, justifyContent: 'center' }}>
-            <ScrollView style={{ padding: 20, marginTop: 20 }}>
+            <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
               <Text style={{ fontSize: 30, marginBottom: 10 }}>
                 Create listing
               </Text>
               <Field name="name" placeholder="Name" component={InputField} />
+              <Field
+                name="picture"
+                title="Pick a picture"
+                component={PictureField}
+              />
               <Field
                 name="category"
                 placeholder="Category"

@@ -24,7 +24,7 @@ export interface WithFindListings {
   loading: boolean
 }
 
-export const WithFindListings = graphql<
+export const withFindListings = graphql<
   any,
   FindListingQuery,
   {},

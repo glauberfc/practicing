@@ -1,12 +1,7 @@
 import * as React from 'react'
 import { FieldProps } from 'formik'
 import { View } from 'react-native'
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage,
-  CheckBox,
-} from 'react-native-elements'
+import { CheckBox } from 'react-native-elements'
 
 interface Props {
   options: string[]
@@ -14,7 +9,7 @@ interface Props {
 
 const CheckboxGroupField: React.SFC<FieldProps<any> & Props> = ({
   field: { name, value },
-  form: { touched, errors, handleChange, handleBlur, setFieldValue },
+  form: { setFieldValue },
   options,
 }) => {
   const onPress = (optionName: string, isChecked: boolean) => {

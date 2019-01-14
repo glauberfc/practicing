@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Card } from 'antd'
-import { WithFindListings } from '@abb/controller'
+import { WithFindListings, withFindListings } from '@abb/controller'
 
 const { Meta } = Card
 
@@ -31,4 +31,4 @@ class FindListingsConnector extends React.PureComponent<WithFindListings> {
   }
 }
 
-export default WithFindListings(FindListingsConnector)
+export default withFindListings(FindListingsConnector)
