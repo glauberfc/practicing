@@ -5,7 +5,7 @@ import {
   FindListingQuery_findListings,
 } from '../../schemaTypes'
 
-const findListginsQuery = gql`
+const findListingsQuery = gql`
   query FindListingQuery {
     findListings {
       id
@@ -29,7 +29,7 @@ export const withFindListings = graphql<
   FindListingQuery,
   {},
   WithFindListings
->(findListginsQuery, {
+>(findListingsQuery, {
   props: ({ data }) => {
     let listings: FindListingQuery_findListings[] = []
 
