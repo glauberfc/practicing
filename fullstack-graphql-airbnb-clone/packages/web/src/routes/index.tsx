@@ -9,6 +9,7 @@ import { ChangePasswordConnector } from '../modules/changePassword/ChangePasswor
 import TextPages from '../modules/textPages'
 import CreateListingConnector from '../modules/listing/create/CreateListingConnector'
 import FindListingsConnector from '../modules/listing/find/FindListingsConnector'
+import ViewListingConnector from '../modules/listing/view/ViewListingConnector'
 import Logout from '../modules/logout'
 
 export const Routes = () => (
@@ -28,6 +29,7 @@ export const Routes = () => (
       />
       <Route path="/m" component={TextPages} />
       <Route path="/listings" component={FindListingsConnector} />
+      <Route path="/listing/:listingId" component={ViewListingConnector} />
       <Route path="/logout" component={Logout} />
       <AuthRoute path="/create-listing" component={CreateListingConnector} />
     </Switch>

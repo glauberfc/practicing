@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Card } from 'antd'
 import { WithFindListings, withFindListings } from '@abb/controller'
+import { Link } from 'react-router-dom'
 
 const { Meta } = Card
 
@@ -23,7 +24,9 @@ class FindListingsConnector extends React.PureComponent<WithFindListings> {
               )
             }
           >
-            <Meta title={listing.name} description={listing.owner.email} />
+            <Link to={`/listing/${listing.id}`}>
+              <Meta title={listing.name} description={listing.owner.email} />
+            </Link>
           </Card>
         ))}
       </div>
