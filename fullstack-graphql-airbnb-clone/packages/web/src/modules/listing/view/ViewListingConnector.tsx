@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Link } from 'react-router-dom'
 import { WithViewListing, withViewListing } from '@abb/controller'
 
 interface Props {
@@ -13,7 +13,12 @@ const ViewListingConnector: React.SFC<
     return <div>Loading...</div>
   }
 
-  return <div>{listing && listing.name}</div>
+  return (
+    <div>
+      <div>{listing && listing.name}</div>
+      <Link to={listing ? `/listing/${listing.id}/chat` : ''}>Chat</Link>
+    </div>
+  )
 }
 
 export default withViewListing(ViewListingConnector)
