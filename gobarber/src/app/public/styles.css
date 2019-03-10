@@ -149,6 +149,7 @@ body {
   margin-bottom: 20px;
 }
 
+.main-wrapper .content a.appointments,
 .main-wrapper .content a.logout {
   background: #de6d6d;
   text-decoration: none;
@@ -163,8 +164,17 @@ body {
   color: #fff;
 }
 
+.main-wrapper .content a.appointments {
+  background: #7159c1;
+  margin-bottom: 10px;
+}
+
 .main-wrapper .content a.logout:hover {
   background: #c15858;
+}
+
+.main-wrapper .content a.appointments:hover {
+  background: #634dac;
 }
 
 .main-wrapper .content p {
@@ -224,6 +234,12 @@ ul.providers {
   font-size: 16px;
   border-radius: 4px;
   color: #fff;
+}
+
+.provider .formated-date {
+  padding: 5px 10px;
+  background: #7159c1;
+  color: #ddd;
 }
 
 .alert {
