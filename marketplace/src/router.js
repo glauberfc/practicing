@@ -1,13 +1,22 @@
 const express = require('express')
-const UserController = require('./app/controllers/UserController')
-const SessionController = require('./app/controllers/SessionController')
+
+const controllers = require('./app/controllers')
 const authMiddleware = require('./app/middlewares/auth')
 
 const router = express.Router()
 
-router.post('/users', UserController.store)
-router.post('/sessions', SessionController.store)
+router.post('/users', controllers.UserController.store)
+router.post('/sessions', controllers.SessionController.store)
 
-router.get('/test', authMiddleware, (req, res) => res.json({ ok: 'true' }))
+router.use(authMiddleware)
+
+/**
+ * Ad
+ */
+router.get('/ads', controllers.AdController.index)
+router.get('/ads/:id', controllers.AdController.show)
+router.post('/ads', controllers.AdController.store)
+router.put('/ads/:id', controllers.AdController.update)
+router.delete('/ads/:id', controllers.AdController.destroy)
 
 module.exports = router
