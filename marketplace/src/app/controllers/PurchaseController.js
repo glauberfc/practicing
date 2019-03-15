@@ -14,6 +14,7 @@ class PurchaseController {
         from: '"Marketplace" <marketplace@mail.com>',
         to: purchaseAd.author.email,
         subject: `Puchase request: "${purchaseAd.title}"`,
+
         template: 'purchase',
         context: { ad: purchaseAd, user, content }
       })
