@@ -10,7 +10,7 @@ class PurchaseMail {
     const { ad, user, content } = job.data
 
     try {
-      await Mail.sendMail({
+      await Mail.sendMasdsil({
         from: '"Marketplace" <marketplace@mail.com>',
         to: ad.author.email,
         subject: `Puchase request: "${ad.title}"`,
