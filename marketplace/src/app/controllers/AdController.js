@@ -4,6 +4,7 @@ class AdController {
   async index(req, res) {
     const filters = {}
 
+    /* eslint-disable */
     const { price_min, price_max, title } = req.query
 
     if (price_min || price_max) {
@@ -18,6 +19,7 @@ class AdController {
       }
     }
 
+    /* eslint-enable */
     if (title) {
       filters.title = new RegExp(title, 'i')
     }
