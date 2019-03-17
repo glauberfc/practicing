@@ -16,11 +16,11 @@
  * Mailtrap
  */
 module.exports = {
-  host: 'smtp.mailtrap.io',
-  port: 2525,
-  secure: false,
+  host: process.env.MAIL_HOST,
+  port: process.env.MAIL_PORT,
+  secure: process.env.MAIL_SECURE,
   auth: {
-    user: 'a3538107820d5f',
-    pass: '3657ffb2e0dec1'
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
   }
 }

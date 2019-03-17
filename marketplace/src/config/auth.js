@@ -1,4 +1,4 @@
 module.exports = {
-  secret: 'GoNode3',
+  secret: process.env.AUTH_SECRET,
   ttl: 86400
 }
