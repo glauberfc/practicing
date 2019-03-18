@@ -2,7 +2,9 @@ const Ad = require('../models/Ad')
 
 class AdController {
   async index(req, res) {
-    const filters = {}
+    const filters = {
+      purchasedBy: null
+    }
 
     /* eslint-disable */
     const { price_min, price_max, title } = req.query
@@ -35,7 +37,7 @@ class AdController {
   }
 
   async show(req, res) {
-    const ad = await Ad.findById(req.params.id)
+    const ad = await Ad.findOne({ id: req.params.id, purchasedBy: undefined })
 
     return res.json(ad)
   }

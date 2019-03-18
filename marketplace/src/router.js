@@ -41,10 +41,12 @@ router.delete('/ads/:id', asyncHandler(controllers.AdController.destroy))
 /**
  * Purchases
  */
+router.get('/purchases', asyncHandler(controllers.PurchaseController.index))
 router.post(
   '/purchases',
   validate(validators.Purchase),
   asyncHandler(controllers.PurchaseController.store)
 )
+router.put('/purchases/:id', asyncHandler(controllers.ApproveController.update))
 
 module.exports = router
